@@ -1,0 +1,66 @@
+{% extends 'game/layout.html' %}
+{% load static %}
+{% block body %}
+<div class="container mt-5">
+  {% if message %}
+  <div class="row">
+    
+      <div class="alert alert-warning text-center" role="alert">
+  {{message}}
+</div>
+
+    
+  </div>
+  {% endif %}
+  <div class="row justify-content-center">
+    <div class="col-sm-7">
+      <div class="card">
+      <div class="card-header text-center"><b>Register</b></div>
+      <div class="card-body">
+        <form action="{% url 'register' %}" method="post">
+          {% csrf_token %}
+          <div class="form-group row">
+            <label for="name" class="col-md-2 col-form-label" >Username</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="name" placeholder="Full name" name="name">
+            </div>
+          </div>
+          <div class="form-group row mt-2">
+            <label for="email" class="col-md-2 col-form-label" >Email</label>
+            <div class="col-md-10">
+              <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+            </div>
+          </div>
+          <div class="form-group row mt-2">
+            <label for="inputPassword" class="col-md-2 col-form-label">Password</label>
+            <div class="col-md-10">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
+          </div>
+          </div>
+
+          <div class="form-group row mt-2">
+            <label for="conform" class="col-md-2 col-form-label" >Conform</label>
+            <div class="col-md-10">
+              <input type="password" class="form-control" id="conform" placeholder="Conform Password" name="conform">
+            </div>
+          </div>
+          <div class="row text-center mt-2">
+            <div class="col-xs-5 ">
+              <input class="btn btn-primary" type="submit" value="Register">
+            </div>
+          </div>
+             
+        </form>
+      </div>
+    </div>
+    
+  </div>
+  
+</div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'chat/index.js' %}"></script>
+{% endblock %}
